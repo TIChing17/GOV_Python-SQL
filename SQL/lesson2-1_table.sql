@@ -5,3 +5,10 @@ CREATE TABLE IF NOT EXISTS studentList(
 );
 
 DROP TABLE studentList;
+
+CREATE TABLE IF NOT EXISTS artistList(
+	id SERIAL,
+	name VARCHAR
+);
+
+SELECT * FROM artistList;
