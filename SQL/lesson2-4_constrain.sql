@@ -11,3 +11,16 @@ create table student(
 );
 
 select * from student;
+
+insert into student values(2,'Ms.B','Math') 
+returning *;
+
+/*指定欄位都要有*/
+insert into student(name, major) values ('Ms.D','Geography')
+returning *;
+
+drop table student;
+
+/*新增多筆*/
+insert into student(name, major) values ('Mr.A','Math'),('Mr.B','English'),('Mrs.C','History')
+returning *;
