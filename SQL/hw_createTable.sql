@@ -1,15 +1,15 @@
 CREATE TABLE IF NOT EXISTS invoices(
-	InvoiceId SERIAL PRIMARY KEY,
+	InvoiceId int,
 	CustomerId INT,
 	InvoiceDate TIMESTAMP,
 	BillingAddress VARCHAR,
-	BillingCity VARCHAR(300),
-	BillingState VARCHAR(300),
-	BillingCountry VARCHAR(300),
-	BillingPostalCode VARCHAR(300),
+	BillingCity VARCHAR,
+	BillingState VARCHAR,
+	BillingCountry VARCHAR,
+	BillingPostalCode VARCHAR,
 	Total FLOAT8
 );
 
 SELECT * FROM invoices;
 
-drop table invoices
+drop table invoices;

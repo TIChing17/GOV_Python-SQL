@@ -11,4 +11,12 @@ create table if not exists station(
 	bike bool
 );
 
+create table if not exists stationNum(
+	trnDate timestamp,
+	stationCode int,
+	gateInComing int,
+	gateOutGoing int
+);
+
 select * from station;
+select * from stationNum;
