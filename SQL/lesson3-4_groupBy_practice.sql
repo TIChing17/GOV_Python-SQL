@@ -1,10 +1,12 @@
 /*全省各站點2022年進站總人數*/
-select sum(gateInComing) from stationNum
+select stationName ,sum(gateInComing) as totalNum from stationNum
 left join station using (stationCode)
-where trnDate between '2022-01-01' and '2022-12-31';
+where trnDate between '2022-01-01' and '2022-12-31'
+group by stationName
+order by totalNum desc;
 
 /*全省各站點2022年進站總人數大於5佰萬人的站點*/
-select stationName, sum(gateInComing) as totalEntranceNum from stationNum
+select stationName, sum(gateInComing) as totalNum from stationNum
 left join station using (stationCode)
 where trnDate between '2022-01-01' and '2022-12-31'
 group by stationName
@@ -33,16 +35,15 @@ and trnDate between '2020-01-01' and '2022-12-31'
 group by year;
 
 /*基隆火車站,臺北火車站2020,2021,2022,每年進站人數*/
-/*total*/
-select extract(year from trnDate) as year, sum(gateInComing) as totalEntranceNum from stationNum
-left join station using (stationCode)
-where stationName in ('基隆', '臺北')
-and trnDate between '2020-01-01' and '2022-12-31'
-group by year;
-/*seperate*/
 select extract(year from trnDate) as year, stationName, sum(gateInComing) as totalEntranceNum from stationNum
 left join station using (stationCode)
 where stationName in ('基隆', '臺北')
 and trnDate between '2020-01-01' and '2022-12-31'
 group by year, stationName
 order by year;
+/*total*/
+select extract(year from trnDate) as year, sum(gateInComing) as totalEntranceNum from stationNum
+left join station using (stationCode)
+where stationName in ('基隆', '臺北')
+and trnDate between '2020-01-01' and '2022-12-31'
+group by year;
