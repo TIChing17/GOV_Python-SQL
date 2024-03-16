@@ -13,6 +13,6 @@ group by stationName
 order by max(gateInComing) desc
 
 select * from stationNum left join station using(stationcode)
-where (stationCode, max(gateInComing)) in (
+where ((stationCode, max(gateInComing)) in (
 	select stationCode, max(gateInComing) from stationNum
-	group by stationCode)
+	group by stationCode))
